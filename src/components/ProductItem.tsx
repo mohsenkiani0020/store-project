@@ -1,6 +1,6 @@
 "use client";
 
-import { Products } from "@/models/products";
+import { Products } from "@/models/productsModel";
 
 function ProductItem({ image, title, price, description }: Products) {
   return (

@@ -1,4 +1,4 @@
-import { ChildrenProps } from "@/models/childrenProps"
+import { ChildrenProps } from "@/models/childrenPropsModel"
 
 function Container({children} : ChildrenProps) {
   return (

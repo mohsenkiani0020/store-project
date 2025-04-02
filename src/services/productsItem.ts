@@ -1,9 +1,9 @@
-import { Products } from "@/models/products";
+import { Products } from "@/models/productsModel";
 
 class ProductsItem {
-  async getProducts(): Promise<Products[]> {
-    const response = await fetch("http://localhost:3001/products",{next : {revalidate : 3600}});
-    const data: Products[] = await response.json();
+  async getProducts(id: string): Promise<Products> {
+    const response = await fetch(`http://localhost:3001/products/${id}`);
+    const data: Products = await response.json();
     return data;
   }
 }

@@ -1,4 +1,4 @@
-import { ChildrenProps } from "@/models/childrenProps"
+import { ChildrenProps } from "@/models/childrenPropsModel"
 import Navbar from "./Navbar"
 
 function Layout({children} : ChildrenProps) {

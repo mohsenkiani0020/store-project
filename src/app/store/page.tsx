@@ -1,6 +1,7 @@
 import Container from "@/components/Container";
 import ProductItem from "@/components/ProductItem";
-import productsItem from "@/services/productsItem";
+import productsItem from "@/services/products";
+import Link from "next/link";
 
 import React from "react";
 
@@ -14,7 +15,9 @@ async function Store() {
       <div className="grid grid-cols-4 gap-4">
       {
         products.map((item)=>
-          <ProductItem key={item.id} {...item}/>
+          <Link href={`/store/${item.id}`}>
+            <ProductItem key={item.id} {...item}/>
+          </Link>
         )
       }
       </div>
