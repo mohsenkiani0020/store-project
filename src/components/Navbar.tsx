@@ -20,16 +20,20 @@ function Navbar() {
     
       <nav className="shadow p-4">
         <Container>
-          <div className="flex gap-4">
-            {navLinks.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={path === item.href ? "text-blue-400" : ""}
-              >
-                {item.title}
-              </Link>
-            ))}
+          <div className="flex justify-between">
+            <div className="flex gap-4">
+              {navLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={path === item.href ? "text-blue-400" : ""}
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+            <Link href="/cart">سبد خرید</Link>
+
           </div>
         </Container>
       </nav>
