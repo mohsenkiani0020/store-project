@@ -1,4 +1,5 @@
 import Container from '@/components/Container'
+import QuantitySelector from '@/components/QuantitySelector'
 import { GetParams } from '@/models/paramsModel'
 import productsItem from '@/services/productsItem'
 
@@ -17,11 +18,7 @@ async function ProductItem({params} : GetParams) {
                 <h2 className='font-bold text-2xl'>{data.title}</h2>
                 <p className='text-gray-500'>{data.description}</p>
                 <p className='font-bold '>قیمت  <span className='text-red-500'>{data.price}</span></p>
-                <div>
-                    <button className='px-4 py-2 bg-sky-400 rounded-sm'>+</button>
-                    <span className='p-4'>7</span>
-                    <button className='px-4 py-2 bg-sky-400 rounded-sm'>-</button>
-                </div>
+                <QuantitySelector id={id} />
             </div>
         </div>
     </Container>

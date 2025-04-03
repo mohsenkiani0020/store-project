@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Container from "./Container";
+import { useCartContext } from "@/app/context/CartContext";
 
 function Navbar() {
   const path = usePathname();
@@ -15,6 +16,7 @@ function Navbar() {
       title: "فروشگاه",
     },
   ];
+  const {totalQty} = useCartContext()
 
   return (
     
@@ -32,7 +34,10 @@ function Navbar() {
                 </Link>
               ))}
             </div>
-            <Link href="/cart">سبد خرید</Link>
+            <div className="flex justify-between items-center gap-4">
+              <span className="bg-red-500 text-white rounded-full px-2 py-1" >{totalQty}</span>
+              <Link href="/cart">سبد خرید</Link>
+            </div>
 
           </div>
         </Container>

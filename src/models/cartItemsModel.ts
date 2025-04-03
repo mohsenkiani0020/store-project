@@ -5,4 +5,7 @@ export interface CartItems {
 
 export interface CartItemsArr {
     allCartItems : CartItems[]
+    handleAddOrUpdateCartItem : (id:number)=> void
+    getProductsQty : (id:number)=> number
+    totalQty : number
 }
