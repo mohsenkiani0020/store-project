@@ -1,7 +1,7 @@
 "use client";
 import { CartItems, CartItemsArr } from "@/models/cartItemsModel";
 import { ChildrenProps } from "@/models/childrenPropsModel";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext({} as CartItemsArr);
 
@@ -44,6 +44,17 @@ export const CartContextProvider = ({ children }: ChildrenProps) => {
   const totalQty = allCartItems.reduce((total, item) => {
     return total + item.qty;
   }, 0);
+  
+  useEffect(()=>{
+    let cartData = localStorage.getItem("cart")
+    if(cartData){
+      setAllCartItems(JSON.parse(cartData))
+    }
+  },[])
+
+  useEffect(()=>{
+    localStorage.setItem("cart",JSON.stringify(allCartItems))
+  },[allCartItems])
 
   return (
     <CartContext.Provider
