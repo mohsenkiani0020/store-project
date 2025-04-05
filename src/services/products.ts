@@ -1,16 +1,44 @@
 import { Products } from "@/models/productsModel";
+import axios from "axios";
 
 class ProductsItem {
+  private axiosInstance = axios.create({
+    baseURL: "http://localhost:3001",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
   async getProducts(): Promise<Products[]> {
-    const response = await fetch("http://localhost:3001/products");
-    const data: Products[] = await response.json();
-    return data;
+    try {
+      const response = await this.axiosInstance.get<Products[]>("/products");
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to get products");
+    }
   }
 
   async getProductsItems(id: string): Promise<Products> {
-    const response = await fetch(`http://localhost:3001/products/${id}`);
-    const data: Products = await response.json();
-    return data;
+    try {
+      const response = await this.axiosInstance.get<Products>(
+        `/products/${id}`
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error(`Failed to get product with id: ${id}`);
+    }
+  }
+
+  async postProduct(product: Products): Promise<Products> {
+    try {
+      const response = await this.axiosInstance.post<Products>(
+        "/products",
+        product
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to post product");
+    }
   }
 }
 
