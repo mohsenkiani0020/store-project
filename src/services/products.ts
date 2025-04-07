@@ -9,9 +9,13 @@ class ProductsItem {
     },
   });
 
-  async getProducts(): Promise<Products[]> {
+  async getProducts(page: string, perPage: string): Promise<Products[]> {
     try {
-      const response = await this.axiosInstance.get<Products[]>("/products");
+      const response = await this.axiosInstance.get<Products[]>(
+        `/products?_page=${page}&_limit=${perPage}`
+      );
+      
+      
       return response.data;
     } catch (error) {
       throw new Error("Failed to get products");

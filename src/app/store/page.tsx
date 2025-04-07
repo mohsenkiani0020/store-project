@@ -1,10 +1,15 @@
 import Container from "@/components/Container";
+import Paginate from "@/components/Paginate";
 import ProductItem from "@/components/ProductItem";
+import { GetParams } from "@/models/paramsModel";
 import productsItem from "@/services/products";
 import Link from "next/link";
 
-async function Store() {
-  const products = await productsItem.getProducts();
+async function Store({searchParams}: GetParams) {
+
+  const { page = "1" , limit = "5" } = await searchParams;
+  const products = await productsItem.getProducts(page,limit);
+  
 
   return (
     <Container>
@@ -16,6 +21,7 @@ async function Store() {
           </Link>
         ))}
       </div>
+      <Paginate/>
     </Container>
   );
 }
