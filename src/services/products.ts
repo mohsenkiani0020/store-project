@@ -9,18 +9,35 @@ class ProductsItem {
     },
   });
 
-  async getProducts(page: string, perPage: string): Promise<Products[]> {
+  // async getProducts(page: string, perPage: string , title : string): Promise<Products[]> {
+  //   try {
+  //     const response = await this.axiosInstance.get<Products[]>(
+  //       `/products?_page=${page}&_limit=${perPage}&title=${title}`
+  //     );
+      
+      
+  //     return response.data;
+  //   } catch (error) {
+  //     throw new Error("Failed to get products");
+  //   }
+  // }
+
+  async getProducts(page: string, perPage: string, title?: string): Promise<Products[]> {
     try {
-      const response = await this.axiosInstance.get<Products[]>(
-        `/products?_page=${page}&_limit=${perPage}`
-      );
-      
-      
+      let url = `/products?_page=${page}&_limit=${perPage}`;
+  
+      if (title && title.trim() !== "") {
+        url += `&title=${encodeURIComponent(title)}`;
+      }
+  
+      const response = await this.axiosInstance.get<Products[]>(url);
       return response.data;
+  
     } catch (error) {
       throw new Error("Failed to get products");
     }
   }
+  
 
   async getProductsItems(id: string): Promise<Products> {
     try {
