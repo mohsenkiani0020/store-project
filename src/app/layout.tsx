@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { GetServerSideProps, Metadata } from "next";
 import "./globals.css";
 import Layout from "@/components/Layout";
 import { Vazirmatn } from "next/font/google";

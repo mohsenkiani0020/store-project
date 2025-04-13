@@ -1,3 +1,4 @@
+"use client"
 import { ChildrenProps } from "@/models/childrenPropsModel"
 import Navbar from "./Navbar"
 
