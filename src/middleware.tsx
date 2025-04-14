@@ -10,7 +10,7 @@ function middleware(request: NextRequest) {
 
 
   const url = new URL(request.url)
-  url.pathname = "/login"
+  url.pathname = "/auth/login"
   return NextResponse.redirect(url.toString())
 }
 

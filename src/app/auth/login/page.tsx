@@ -1,11 +1,9 @@
 "use client";
-import Container from "@/components/Container";
 import nookies from "nookies";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import Image from "next/image";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import Link from "next/link";
 
 function Login() {
   const router = useRouter();
@@ -38,9 +36,7 @@ function Login() {
   });
 
   return (
-    <div className="h-[100vh] w-full flex justify-center items-center bg-customPurple-400">
-      <div className="grid grid-cols-12 w-7xl mx-auto rounded-4xl overflow-hidden shadow-2xl">
-        <div className="col-span-4 bg-white flex justify-center items-center">
+
           <form className="w-full" onSubmit={formik.handleSubmit}>
             <div className="w-full px-10 flex flex-col gap-6">
               <h1 className="font-bold text-4xl textce text-customPurple-900">
@@ -85,7 +81,7 @@ function Login() {
                   />
                 </div>
                 <button className="text-small cursor-pointer">
-                  فراموشی رمز عبور؟
+                  <Link href="/auth/forgot-password">فراموشی رمز عبور؟</Link>
                 </button>
               </div>
               <button
@@ -95,33 +91,10 @@ function Login() {
                 ورود
               </button>
               <button className="text-customPurple-400 text-small cursor-pointer">
-                ثبت نام حساب
+                <Link href="/auth/register" >ثبت نام حساب</Link>
               </button>
             </div>
           </form>
-        </div>
-        <div className="col-span-8">
-          <div className="relative w-full h-[85vh] ">
-            <Image
-              src="/images/login.webp"
-              alt="login"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute h-[45vh] w-full flex justify-center items-center flex-col">
-              <div className="backdrop-blur p-6 flex justify-center items-center flex-col gap-4 w-full">
-                <h1 className=" text-customPurple-900 text-5xl font-bold ">
-                  به فروشگاه خوش آمدید
-                </h1>
-                <p className=" text-customPurple-900 font-bold text-xl">
-                  تمامی محصولات خود رو از سایت ما پیدا کنید
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
 

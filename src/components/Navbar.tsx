@@ -54,7 +54,7 @@ function Navbar() {
                 خروج
               </button>
             ) : (
-              <Link href="/login">ورود / ثبت نام</Link>
+              <Link href="/auth/login">ورود / ثبت نام</Link>
             )}
           </div>
         </div>
