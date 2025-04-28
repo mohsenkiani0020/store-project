@@ -1,10 +1,6 @@
 @import "tailwindcss";
 
 
-
-
-
-
  @theme {
     --color-customPurple-100: #D0C1F9;  
     --color-customPurple-200: #B1A9F7;
@@ -16,6 +12,7 @@
     --color-customPurple-800: #4A3AB6;
     --color-customPurple-900: #3A2D99;  
     --text-small: 13px;
+
   }  
 
   @plugin "daisyui";
@@ -49,5 +46,3 @@
   }
   
   
-
-

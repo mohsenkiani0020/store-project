@@ -15,6 +15,7 @@ function AuthLayout({ children }: ChildrenProps) {
               src="/images/login.webp"
               alt="login"
               fill
+              priority 
               className="object-cover"
             />
             <div className="absolute h-[45vh] w-full flex justify-center items-center flex-col">

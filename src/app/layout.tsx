@@ -1,13 +1,9 @@
-import type { GetServerSideProps, Metadata } from "next";
+import type { Metadata } from "next";
 import "./globals.css";
 import Layout from "@/components/Layout";
-import { Vazirmatn } from "next/font/google";
 import { CartContextProvider } from "./context/CartContext";
+import vazir from "@/components/fonts/vazir/vazir";
 
-const vazir = Vazirmatn({
-  subsets: ["arabic"],
-  weight: ["400", "700"],
-});
 
 export const metadata: Metadata = {
   title: "Store",
