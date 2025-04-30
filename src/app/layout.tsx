@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Layout from "@/components/Layout";
 import { CartContextProvider } from "./context/CartContext";
-import vazir from "@/components/fonts/vazir/vazir";
-
+import vazir from "@/fonts/vazir/vazir";
 
 export const metadata: Metadata = {
   title: "Store",
@@ -18,9 +17,9 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body className={vazir.className}>
-        <CartContextProvider>
+        {/* <CartContextProvider> */}
           <Layout>{children}</Layout>
-        </CartContextProvider>
+        {/* </CartContextProvider> */}
       </body>
     </html>
   );

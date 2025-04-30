@@ -7,6 +7,8 @@ import { Products } from "@/models/productsModel";
 import productsItem from "@/services/products";
 import { formatPrice } from "@/utils/formatPrice";
 import Discounts from "@/services/discounts";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 
 function Cart() {
   const [data, setData] = useState<Products[]>([]);
@@ -14,21 +16,17 @@ function Cart() {
   const [discountedPrice, setDiscountedPrice] = useState(0);
   const [finalPrice, setFinalPrice] = useState(0);
 
-  const { allCartItems } = useCartContext();
-  
+  // const { allCartItems } = useCartContext();
+  const allCartItems =  useSelector((state : RootState) => state.cart.items )
+
   useEffect(() => {
     async function getData() {
       const data = await productsItem.getProducts();
       setData(data);
     }
-    getData()
+    getData();
   }, []);
-  
-  async function getDiscounts() {
 
-    
-  }
-  
   const totalPrice = (): number => {
     return allCartItems.reduce((total, item) => {
       let selectedProduct = data?.find((product) => item.id == product.id);
@@ -37,20 +35,14 @@ function Cart() {
     }, 0);
   };
 
-
-  const handleSubmitDiscounts = async (e : React.FormEvent<HTMLFormElement>)  => {
-    e.preventDefault()
+  const handleSubmitDiscounts = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const data = await Discounts.getDiscounts(discountsInput);
-    await getDiscounts()
-    let discountedPrice = totalPrice() * data[0].percentage /100
-    let finalPrice = totalPrice() - discountedPrice
-    setDiscountedPrice(discountedPrice)
-    setFinalPrice(finalPrice)
-  }
-
-
-
-
+    let discountedPrice = (totalPrice() * data[0].percentage) / 100;
+    let finalPrice = totalPrice() - discountedPrice;
+    setDiscountedPrice(discountedPrice);
+    setFinalPrice(finalPrice);
+  };
 
   return (
     <Container>
@@ -70,7 +62,13 @@ function Cart() {
           قیمت نهایی : <span> {formatPrice(finalPrice)} </span>
         </h3>
         <form onSubmit={handleSubmitDiscounts} className="flex gap-4">
-          <input onChange={(e)=>{setDiscountsInput(e.currentTarget.value)}} className="border p-2" type="text" />
+          <input
+            onChange={(e) => {
+              setDiscountsInput(e.currentTarget.value);
+            }}
+            className="border p-2"
+            type="text"
+          />
           <button className="bg-blue-700 px-4 py-2">اعمال</button>
         </form>
       </div>

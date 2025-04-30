@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@next/font": "^14.2.15",
+    "@reduxjs/toolkit": "^2.7.0",
     "axios": "^1.8.4",
     "formik": "^2.4.6",
     "json-server": "^0.17.4",
@@ -19,6 +20,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-paginate": "^8.3.0",
+    "react-redux": "^9.2.0",
     "yup": "^1.6.1"
   },
   "devDependencies": {

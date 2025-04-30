@@ -22,8 +22,11 @@ class ProductsItem {
   //   }
   // }
 
-  async getProducts(page: string, perPage: string, title?: string): Promise<Products[]> {
+  async getProducts(page?: string, perPage?: string, title?: string): Promise<Products[]> {
     try {
+      if(page && perPage){
+        
+      }
       let url = `/products?_page=${page}&_limit=${perPage}`;
   
       if (title && title.trim() !== "") {

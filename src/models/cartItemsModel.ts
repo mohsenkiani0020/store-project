@@ -11,3 +11,7 @@ export interface CartItemsArr {
     handleRemoveOrUpdateCartItem : (id:number)=> void
     handleRemoveCartItem : (id:number)=> void
 }
+
+export interface CartState {
+    items: CartItems[];
+  }

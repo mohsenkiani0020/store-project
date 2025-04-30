@@ -4,6 +4,8 @@ import { redirect, usePathname, useRouter } from "next/navigation";
 import Container from "./Container";
 import { useCartContext } from "@/app/context/CartContext";
 import nookies from "nookies";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 
 function Navbar() {
   const router = useRouter();
@@ -18,10 +20,15 @@ function Navbar() {
       title: "فروشگاه",
     },
   ];
-  const { totalQty } = useCartContext();
+  // const { totalQty } = useCartContext();
 
   //get token
   const token = nookies.get().token;
+
+  const allCartItems =  useSelector((state : RootState) => state.cart.items )
+  const totalQty = allCartItems.reduce((total, item) => {
+    return total + item.qty;
+  }, 0);
 
   return (
     <nav className="shadow p-4">
