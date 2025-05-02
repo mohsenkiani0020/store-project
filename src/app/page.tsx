@@ -1,7 +1,11 @@
+import Carousel from "@/components/home-page/Carousel";
 
 
 export default function Home() {
   return (
-    <div>mohsen</div>
+    <div>
+      <Carousel/>
+      sssssss
+    </div>
   );
 }

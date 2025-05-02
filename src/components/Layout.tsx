@@ -11,7 +11,7 @@ function Layout({ children }: ChildrenProps) {
       <Provider store={store}>
         <CartInitializer />
         <Navbar />
-        <main className="pt-20">{children}</main>
+        <main className="pt-18">{children}</main>
       </Provider>
     </>
   );

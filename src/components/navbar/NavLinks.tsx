@@ -22,7 +22,7 @@ const NavLinks = ({ token, path }: NavLinksProps) => {
           href={item.href}
           className={clsx(
             "text-center py-2 rounded-md min-w-20",
-            path === item.href ? "bg-black/75 text-white" : "hover:bg-gray-500"
+            path === item.href ? "bg-red-500/75 text-white" : "hover:bg-gray-500"
           )}
         >
           {item.title}
@@ -35,7 +35,7 @@ const NavLinks = ({ token, path }: NavLinksProps) => {
           className={clsx(
             "text-center px-4 py-2 rounded-md min-w-20",
             path === "/dashboard"
-              ? "bg-black/75 text-white"
+              ? "bg-red-500/75 text-white"
               : "hover:bg-gray-500"
           )}
         >
